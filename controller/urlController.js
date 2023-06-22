@@ -33,6 +33,23 @@ const createURL = async (req, res) => {
     }
 }
 
+const handleGetAnalytics = async (req, res) => {
+    try{
+        const shortId = req.params.shortId;
+        const result = await urlModel.findOne({ shortId })
+        return res.json({ 
+            totalClicks: result.visitHistory.length,
+            analytics: result.visitHistory})
+    }catch(err){
+        console.log(err)
+        res.status(400).json({
+        success: false,
+        messsage: err.message
+        })
+    }
+}
+
 module.exports = {
-    createURL
+    createURL,
+    handleGetAnalytics
 }

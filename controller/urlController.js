@@ -5,7 +5,7 @@ const createURL = async (req, res) => {
     try {
         const { redirectURL } = req.body;
         if(!redirectURL){
-            throw new Error("Email is Required");
+            throw new Error("url is Required");
         }
         const hashedID = shortid()
         const urlExists = await urlModel.findOne({hashedID})
@@ -20,7 +20,7 @@ const createURL = async (req, res) => {
         })
         res.status(201).json({
             success: true,
-            message: "User Created Successfully",
+            message: "URL Created Successfully",
             url
           })
 

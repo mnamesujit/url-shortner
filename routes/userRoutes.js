@@ -3,7 +3,10 @@ const { createURL, handleGetAnalytics } = require("../controller/urlController")
 const urlModel = require("../model/urlModel");
 const router = express.Router();
 
-// GET request
+// GET requests
+router.get('/', async (req, res) => {
+    return res.render('../views/index')
+})
 router.get('/:shortId', async (req, res) => {
     try{
         const shortId = req.params.shortId;

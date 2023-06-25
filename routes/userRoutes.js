@@ -4,8 +4,12 @@ const urlModel = require("../model/urlModel");
 const router = express.Router();
 
 // GET requests
-router.get('/', async (req, res) => {
-    return res.render('../views/index')
+router.get('/test', async (req, res) => {
+    const allUrls = await urlModel.find({});
+
+    return res.render("index", {
+        urls:  allUrls
+    })
 })
 router.get('/:shortId', async (req, res) => {
     try{

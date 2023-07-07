@@ -3,8 +3,8 @@ const shortid = require("shortid")
  
 const createURL = async (req, res) => {
     try {
-        const { redirectURL } = req.body;
-        if(!redirectURL){
+        const { originalURL } = req.body;
+        if(!originalURL){
             throw new Error("url is Required");
         }
         const hashedID = shortid()
@@ -15,14 +15,15 @@ const createURL = async (req, res) => {
         
         const url = await urlModel.create({
             shortId: hashedID,
-            redirectURL: redirectURL,
+            redirectURL: originalURL,
             visitHistory: []
         })
-        res.status(201).json({
-            success: true,
-            message: "URL Created Successfully",
-            url
-          })
+        // return res.status(201).json({
+        //     success: true,
+        //     message: "URL Created Successfully",
+        //     url
+        //   })
+        return res.render("index", { id: hashedID})
 
     }catch(err){
         console.log(err)

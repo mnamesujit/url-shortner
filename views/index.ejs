@@ -12,11 +12,39 @@
    <main class="container">
     <h1>URL Shortener</h1>
     <div class="ruler"></div>
-    <form action="" class="form">
-        <label for="url">Enter Your Original URL</label>
-        <input type="text" name="url" id="url" placeholder="Type/Paste Your URL Here">
+    <form method="POST" action="/createurl" class="form">
+        <label for="url">Enter Your Original URL: &nbsp;</label>
+        <input type="text" name="originalURL" id="url" placeholder="Type/Paste Your URL Here">
         <button type="submit">Generate URL</button>
     </form>
+    <% if (locals.id) { %>
+        <p> Generated URL: <a href="<%= id %>" target="_blank" >http://127.0.0.1:8000/:<%= id %></a></p>
+    <% } %>
+
+    <h2>Previously Sorted URL's</h2>
+    <div class="all-urls">
+        <% if (locals.urls) { %>
+         <table>
+            <thead>
+                <th>Id:</th>
+                <th>ShortId</th>
+                <th>Redirects</th>
+                <th>Visits</th>
+            </thead>
+            <tbody>
+                <% urls.forEach((url, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= url.shortId %></td>
+                        <td><%= url.redirectURL %></td>
+                        <td><%= url.visitHistory.length %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+         </table>
+
+        <% } %>
+    </div>
    </main>
 </body>
 </html>

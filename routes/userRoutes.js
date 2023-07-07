@@ -4,7 +4,7 @@ const urlModel = require("../model/urlModel");
 const router = express.Router();
 
 // GET requests
-router.get('/test', async (req, res) => {
+router.get('/', async (req, res) => {
     const allUrls = await urlModel.find({});
     return res.render("index", {
         urls:  allUrls
@@ -13,23 +13,24 @@ router.get('/test', async (req, res) => {
 router.get('/:shortId', async (req, res) => {
     try{
         const shortId = req.params.shortId;
-        const entry = await urlModel.findOneAndUpdate(
-            { shortId },
-            {
-                $push: {
-                    visitHistory: {
-                        timestamp: Date.now()
+        if (shortId) {
+            const entry = await urlModel.findOneAndUpdate(
+                { shortId },
+                {
+                    $push: {
+                        visitHistory: {
+                            timestamp: Date.now()
+                        }
                     }
                 }
-            }
-        )
-        console.log(entry)
-        res.redirect(entry.redirectURL)
+            )
+            return res.redirect(entry?.redirectURL)
+        }
     }catch(err){
         console.log(err)
         res.status(400).json({
             success: false,
-            messsage: err.message
+            message: err.message
             })
     }
 })

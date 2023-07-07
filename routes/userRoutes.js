@@ -6,7 +6,6 @@ const router = express.Router();
 // GET requests
 router.get('/test', async (req, res) => {
     const allUrls = await urlModel.find({});
-
     return res.render("index", {
         urls:  allUrls
     })
@@ -24,6 +23,7 @@ router.get('/:shortId', async (req, res) => {
                 }
             }
         )
+        console.log(entry)
         res.redirect(entry.redirectURL)
     }catch(err){
         console.log(err)

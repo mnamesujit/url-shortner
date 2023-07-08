@@ -34,6 +34,31 @@ const createURL = async (req, res) => {
     }
 }
 
+const deleteURL = async (req, res) => {
+    try {
+        let requestURL = req.params.shortId;
+        console.log("Printing URls........")
+        requestURL = String(requestURL)
+        console.log(requestURL)
+        if (!requestURL) {
+            throw new Error("url is Required");
+        }
+        const urlDeleted = await urlModel.deleteOne({ shortId: requestURL })
+        console.log(urlDeleted)
+        return res.status(200).json({
+            success: true,
+            message: "Data Deleted Successfully",
+            id : requestURL
+          })
+    } catch (err) {
+        console.log(err)
+        res.status(400).json({
+        success: false,
+        messsage: err.message
+        })
+    } 
+}
+
 const handleGetAnalytics = async (req, res) => {
     try{
         const shortId = req.params.shortId;
@@ -52,5 +77,6 @@ const handleGetAnalytics = async (req, res) => {
 
 module.exports = {
     createURL,
-    handleGetAnalytics
+    handleGetAnalytics,
+    deleteURL
 }

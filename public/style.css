@@ -18,9 +18,9 @@ body{
 }
 .container{
     background-color: rgb(50, 54, 54);
-    width: 75%;
+    width: 68%;
     margin: 4rem auto;
-    padding: 3rem 2rem;
+    padding: 3rem 3rem;
 }
 .ruler{
     border: 1px solid rgb(152, 142, 142);
@@ -40,7 +40,7 @@ body{
 .form input[type = "text"]{
     height: 40px;
     width: 100%;
-    max-width: 400px;
+    max-width: 440px;
     padding: 5px 1rem;
     border-radius: 10px;
 
@@ -57,15 +57,33 @@ input::placeholder{
 }
 p{
     font-size: 1.6rem;
-    margin-top: 2rem;
+    margin-top: 1.4rem;
 }
 table{
-    width: 70%;
+    width: 100%;
     text-align: center;
     margin: auto;
     margin-top: 3rem;
     border-collapse: collapse;
 }
-tbody tr:nth-child(odd){
+table caption{
+    font-size: 2.2rem;
+    text-align: left;
+    margin: 1rem 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgb(184, 178, 178);
+}
+table .theader{
+    background-color:  rgb(63, 90, 86);
+    font-size: 1.9rem;
+}
+table .theader th{
+    padding: 10px;
+}
+table .tbody td{
+    padding: 10px;
+    font-size: 1.6rem;
+}
+tbody tr:nth-child(even){
     background-color: rgb(95, 93, 93);
 }

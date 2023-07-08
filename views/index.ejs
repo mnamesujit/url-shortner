@@ -21,28 +21,32 @@
         <p> Generated URL: <a href="<%= id %>" target="_blank" >http://127.0.0.1:8000/:<%= id %></a></p>
     <% } %>
 
-    <h2>Previously Sorted URL's</h2>
     <div class="all-urls">
         <% if (locals.urls) { %>
          <table>
+            <caption>Previously Sortend Url's</caption>
             <thead>
-                <th>Id:</th>
-                <th>ShortId</th>
-                <th>Redirects</th>
-                <th>Visits</th>
+                <tr class="theader">
+                    <th>Id:</th>
+                    <th>ShortId</th>
+                    <th>Redirects</th>
+                    <th>Visits</th>
+                    <th>Remove</th>
+                </tr>
             </thead>
             <tbody>
                 <% urls.forEach((url, index) => { %>
-                    <tr>
+                    <tr class="tbody">
                         <td><%= index + 1 %></td>
-                        <td><%= url.shortId %></td>
+                        <td><a href="<%= url.shortId %>" target="_blank" title="<%= url.redirectURL %>">:/<%= url.shortId %></a></td>
                         <td><%= url.redirectURL %></td>
                         <td><%= url.visitHistory.length %></td>
+                        <td><button>delete</button> </td>
                     </tr>
                 <% }) %>
             </tbody>
          </table>
-
+         <hr>
         <% } %>
     </div>
    </main>

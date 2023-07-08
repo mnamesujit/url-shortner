@@ -1,5 +1,5 @@
 const express = require("express");
-const { createURL, handleGetAnalytics } = require("../controller/urlController");
+const { createURL, handleGetAnalytics, deleteURL } = require("../controller/urlController");
 const urlModel = require("../model/urlModel");
 const router = express.Router();
 
@@ -39,5 +39,6 @@ router.get('/analytics/:shortId', handleGetAnalytics)
 
 // POST request
 router.post('/createurl', createURL)
+router.delete("/:shortId", deleteURL)
 
 module.exports = router

@@ -11,6 +11,11 @@
 <body>
    <main class="container">
     <h1>URL Shortener</h1>
+    <% if (!locals.isHome) { %>
+        <div class="go-back">
+            <button><a href="/">Go Back</a></button>
+        </div>
+    <% } %>
     <div class="ruler"></div>
     <form method="POST" action="/createurl" class="form">
         <label for="url">Enter Your Original URL: &nbsp;</label>

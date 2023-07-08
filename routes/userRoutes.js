@@ -7,7 +7,8 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     const allUrls = await urlModel.find({});
     return res.render("index", {
-        urls:  allUrls
+        urls: allUrls,
+        isHome: true
     })
 })
 router.get('/:shortId', async (req, res) => {

@@ -30,11 +30,15 @@ body{
 }
 .go-back button{
     border: 1px solid white;
+    background-color: transparent;
     padding: 5px 10px;
 }
 .go-back button a{
     color: black;
     text-decoration: none;
+}
+.delete-icon{
+    background-color: transparent;
 }
 .ruler{
     border: 1px solid rgb(152, 142, 142);

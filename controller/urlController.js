@@ -29,7 +29,7 @@ const createURL = async (req, res) => {
         console.log(err)
         res.status(400).json({
         success: false,
-        messsage: err.message
+        message: err.message
         })
     }
 }
@@ -45,16 +45,13 @@ const deleteURL = async (req, res) => {
         }
         const urlDeleted = await urlModel.deleteOne({ shortId: requestURL })
         console.log(urlDeleted)
-        return res.status(200).json({
-            success: true,
-            message: "Data Deleted Successfully",
-            id : requestURL
-          })
+        return res.redirect('/')
+
     } catch (err) {
         console.log(err)
         res.status(400).json({
         success: false,
-        messsage: err.message
+        message: err.message
         })
     } 
 }
@@ -70,7 +67,7 @@ const handleGetAnalytics = async (req, res) => {
         console.log(err)
         res.status(400).json({
         success: false,
-        messsage: err.message
+        message: err.message
         })
     }
 }

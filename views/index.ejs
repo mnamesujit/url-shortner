@@ -46,7 +46,13 @@
                         <td><a href="<%= url.shortId %>" target="_blank" title="<%= url.redirectURL %>">:/<%= url.shortId %></a></td>
                         <td><%= url.redirectURL %></td>
                         <td><%= url.visitHistory.length %></td>
-                        <td class="delete-icon"><button><img src="./delete.gif" alt="delete" srcset=""></button> </td>
+                        <td class="delete-icon">
+                            <form action="/<%= url.shortId %>" method="post">
+                                <button type="submit" onclick="showToast('URL Deleted!', 3000)">
+                                    <img src="./delete.gif" alt="delete" srcset="">
+                                </button> 
+                            </form>
+                        </td>
                     </tr>
                 <% }) %>
             </tbody>
@@ -55,5 +61,7 @@
         <% } %>
     </div>
    </main>
+   <div id="toast-container"></div> 
+   <script src="script.js"></script>
 </body>
 </html>

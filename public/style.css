@@ -12,6 +12,10 @@ a{
     /* text-decoration: none; */
     color: yellow;
 }
+button:hover{
+    cursor: pointer;
+    background-color: rgb(247, 219, 219);
+}
 body{
     background-color: #292424;
     color: white;
@@ -27,11 +31,18 @@ body{
     position: absolute;
     right: 30px;
     top: 30px;
+    background-color: yellow;
+    border-radius: 5px;
 }
 .go-back button{
+    border-radius: 80px;
     border: 1px solid white;
     background-color: transparent;
     padding: 5px 10px;
+}
+.go-back button:hover{
+    outline: none;
+    border: none;
 }
 .go-back button a{
     color: black;

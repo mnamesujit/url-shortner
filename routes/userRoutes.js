@@ -40,6 +40,6 @@ router.get('/analytics/:shortId', handleGetAnalytics)
 
 // POST request
 router.post('/createurl', createURL)
-router.delete("/:shortId", deleteURL)
+router.post("/:shortId", deleteURL)
 
 module.exports = router
